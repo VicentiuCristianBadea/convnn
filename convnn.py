@@ -9,6 +9,7 @@ import tensorflow as tf
 from tensorflow.python.framework import ops 
 from cnn_utils import *
 
+#This is a comment
 
 # %matplotlib inline
 np.random.seed(1)
