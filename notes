@@ -1,0 +1,40 @@
+Object Localization:
+
+	1. Image classification first
+	2. Classification with localization (find where, single object)
+	3. Detection (classify and localize multiple objects)
+
+
+Classificaiton:
+	Image -> ConvNet -> Softmax (pedestrian, car, motorcycle, background)
+
+	Also output: bounding box (bx, by, bh, bw)
+		1. bx, by is the center of the object
+		2. bh: height
+		3. bw: width
+
+y = [pc]			pc -> is there an object?
+	[bx]
+	[by]
+	[bh]
+	[bw]
+	[c1]			c1 -> class 1
+	[c2]			c2 -> class 2
+	[c3]			c3 -> class 3
+
+In the case of a cone:
+
+y = [pc]
+	[bx]
+	[by]
+	[bh]
+	[bw]
+	[c1]			c1 -> blue cone
+	[c2]			c2 -> yellow cone
+
+
+Find large dataset of zoomed-in cone images and run ConvNet on it train for image classification
+
+Split the large image into multiple smaller set of images, which will be fed into the trained ConvNet for image classification. Move window by a certain stride and repeat.
+
+Use large size of window and run again through same image with certain stride.
