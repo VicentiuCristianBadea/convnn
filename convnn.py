@@ -53,21 +53,25 @@ def compileModel(model):
 						callbacks=[cp_callback])
 	return history
 
-def plotHistory(history, model):
+def plotHistory(history):
 	plt.plot(history.history['accuracy'], label='accuracy')
 	plt.plot(history.history['val_accuracy'], label='val_accuracy')
 	plt.xlabel('Epoch')
 	plt.ylabel('Accuracy')
 	plt.ylim([0.5, 1])
 	plt.legend(loc='lower right')
+	plt.show()
+	
+def evaluateModel(model):
 	test_loss, test_acc = model.evaluate(test_images, Y_test_orig, verbose=2)
 	return test_loss, test_acc
 
 def __main__():
 	model = createModel()
 	history = compileModel(model)
+	test_loss, test_acc = evaluateModel(model)
 	model.summary()
-	test_loss, test_acc = plotHistory(history, model)
-	print(test_acc)
+	plotHistory(history)
+	
 
 __main__()
