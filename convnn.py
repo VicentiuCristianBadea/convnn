@@ -73,5 +73,5 @@ def __main__():
 	model.summary()
 	plotHistory(history)
 	
-
-__main__()
+# Run the main function
+__main__() 	
